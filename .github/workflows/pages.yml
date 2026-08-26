@@ -29,7 +29,7 @@ jobs:
           cp pilot-readable.html _site/pilot.html
           cp sample-readable.html _site/sample.html
           cp start.html _site/index.html
-          cp engine.js resources.js pilot-app.js sample-app.js _site/
+          cp engine.js resources.js questions.js pilot-app.js sample-app.js _site/
           touch _site/.nojekyll
       - name: Setup Pages
         uses: actions/configure-pages@v5
