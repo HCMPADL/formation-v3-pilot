@@ -1,0 +1,29 @@
+name: Format readable HTML copies
+
+on:
+  push:
+    paths:
+      - '.github/workflows/format-readable-html.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Format HTML safely with Prettier
+        run: npx --yes prettier@3.3.3 --write pilot-readable.html sample-readable.html
+      - name: Commit formatted copies
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add pilot-readable.html sample-readable.html
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Format readable V3 HTML copies"
+            git push
+          fi
