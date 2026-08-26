@@ -1,180 +1,460 @@
 <!doctype html>
 <html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Formation V3 · Sample Profile</title>
-<style>
-:root{--bg:#f3efe6;--paper:#fffdf8;--ink:#203027;--muted:#657269;--g:#285641;--deep:#173a2b;--gold:#98744c;--line:#d5ddd6}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.56 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}.w{max-width:980px;margin:auto;padding:24px 18px 90px}.brand{font-weight:900;letter-spacing:.12em}.hero{padding:48px 0 20px}.ey{font-size:.73rem;text-transform:uppercase;letter-spacing:.13em;font-weight:900;color:var(--gold)}h1{font-size:clamp(2.6rem,7vw,4.5rem);line-height:1;margin:.15em 0 .25em}h2{font-size:clamp(1.6rem,4vw,2.3rem)}.lead{font-size:1.14rem;color:#506057}.card{background:var(--paper);border-radius:22px;padding:26px;margin:15px 0}.opts{display:grid;grid-template-columns:1fr 1fr;gap:9px}.opt{display:flex;gap:8px;background:white;border:1px solid var(--line);border-radius:12px;padding:11px}.other,textarea{width:100%;font:inherit;padding:12px;border:1px solid var(--line);border-radius:12px;margin-top:9px}.note,.desc{font-size:.9rem;color:var(--muted)}button{border:0;border-radius:28px;padding:12px 18px;background:var(--g);color:white;font-weight:900;font-size:1rem;cursor:pointer}.hide{display:none}.stage{margin:65px 0}.stagehead{border-bottom:1px solid #cbd4cd;padding-bottom:14px;margin-bottom:20px}.domain{margin:25px 0}.top{display:flex;justify-content:space-between;gap:10px}.pill{background:#e5ede6;border-radius:16px;padding:4px 9px;font-size:.79rem;font-weight:900}.bar{height:18px;background:#e5e9e5;border-radius:20px;overflow:hidden;margin:8px 0}.bar div{height:100%;background:#356c50}.grid3,.resgrid,.share{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.area{background:var(--paper);border-radius:20px;padding:23px;border-top:6px solid var(--g)}.status{font:1.4rem Georgia,serif}.aa{background:var(--deep);color:white;border-radius:30px;padding:40px 34px;margin:70px 0}.aa .ey{color:#e3c89e}.intro{font-size:1.14rem;color:#dce7df}.definition{display:grid;grid-template-columns:125px 1fr;gap:18px;padding:19px 0;border-bottom:1px solid #ffffff28}.term{font-weight:900;color:#e4c99f}.result{margin-top:28px;border:1px solid #ffffff25;background:#ffffff0b;border-radius:18px;padding:25px}.confidence{display:inline-block;background:#f0debc;color:#173a2b;padding:5px 9px;border-radius:15px;font-size:.77rem;font-weight:900}.why{border-left:3px solid #d7b985;padding:13px 15px;background:#ffffff0b;margin-top:13px}.bridge{margin-top:29px;background:#f7f1e6;color:var(--ink);border-radius:18px;padding:22px}blockquote{font:1.3rem/1.4 Georgia,serif;margin:7px 0}.plan{background:#e6eee7;border-radius:27px;padding:28px}.week,.resource{background:white;border-radius:15px;padding:17px;margin:10px 0}.resource{border:1px solid var(--line)}.feedback{background:#f0e7d9;border-radius:20px;padding:23px;margin-top:20px}.sampletag{display:inline-block;background:#f0debc;border-radius:15px;padding:5px 10px;font-weight:900;font-size:.78rem}@media(max-width:720px){.opts,.grid3,.resgrid,.share,.definition{grid-template-columns:1fr}}@media print{#pre,.feedback,button{display:none!important}.w{max-width:none}.stage,.aa{break-inside:avoid;margin:25px 0}}
-</style>
-</head>
-<body>
-<main class="w">
-<div class="brand">FORMATION</div>
-<section id="pre">
-<div class="hero">
-<div class="ey">Sample Experience · Stage 3</div>
-<span class="sampletag">SAMPLE DATA ALREADY LOADED</span>
-<h1>Before you see your profile</h1>
-<p class="lead">The assessment has already been completed using a deliberately realistic sample profile. Use these contextual questions, then experience Stages 4–8 exactly as a participant would.</p>
-</div>
-<div class="card">
-<div id="r1">
-</div>
-<div id="r2" style="margin-top:32px">
-</div>
-<h2 style="margin-top:32px">What do you sense God may be inviting you into in this season?</h2>
-<textarea id="invite" rows="5">I sense God inviting me to become less hurried and more present to him in ordinary life.</textarea>
-<p>
-<button onclick="profile()">See sample Formation Profile</button>
-</p>
-</div>
-</section>
-<section id="prof" class="hide">
-<div class="hero">
-<div class="ey">Sample Formation Profile</div>
-<span class="sampletag">SAMPLE PROFILE</span>
-<h1>A picture of this season.</h1>
-<p class="lead">These stages are not grades. They give language for noticing what is taking shape, growing, shaping and sustaining your life with God.</p>
-</div>
-<section class="stage">
-<div class="stagehead">
-<div class="ey">Stage 4 · Domain Responses</div>
-<h2>Your fourteen domains</h2>
-</div>
-<div class="card" id="domains">
-</div>
-</section>
-<section class="stage">
-<div class="stagehead">
-<div class="ey">Stage 5 · Three Areas</div>
-<h2>Step back and see the wider picture.</h2>
-</div>
-<div class="grid3" id="areas">
-</div>
-</section>
-<section class="aa">
-<div class="ey">Stage 6 · What We Notice</div>
-<h1>Anchor & Attention</h1>
-<p class="intro">This is the interpretive centre of your profile. It asks what is already supporting your formation and where gentle, intentional care may be fruitful next.</p>
-<div class="definition">
-<div class="term">ANCHOR</div>
-<div>
-<strong>What is already helping hold and shape you.</strong>
-<br>A rhythm you may be able to draw from as you grow elsewhere.</div>
-</div>
-<div class="definition">
-<div class="term">ATTENTION</div>
-<div>
-<strong>What may benefit from gentle, intentional care.</strong>
-<br>Not simply your lowest result: Formation considers the pattern of your profile and the context you described.</div>
-</div>
-<div class="result" id="anchor">
-</div>
-<div class="result" id="attention">
-</div>
-<div class="bridge">
-<div class="ey">Invitation · In your own words</div>
-<blockquote id="inv">
-</blockquote>
-<p>Hold your own words alongside Formation's suggestion. The profile offers a formation hypothesis for reflection; prayerful discernment remains central.</p>
-</div>
-</section>
-<section class="stage">
-<div class="stagehead">
-<div class="ey">Stage 7 · Formation Plan</div>
-<h2>One four-week experiment.</h2>
-<p>The goal is not completion. It is to notice whether this rhythm helps you become more present to God.</p>
-</div>
-<div class="plan" id="plan">
-</div>
-<div class="card">
-<div class="ey">Resources</div>
-<h2 id="restitle">
-</h2>
-<p class="lead">Start with whatever is useful. You do not need to work through everything.</p>
-<div class="resgrid" id="res">
-</div>
-</div>
-</section>
-<section class="stage">
-<div class="stagehead">
-<div class="ey">Stage 8 · Sharing</div>
-<h2>Keep it, share it, or invite someone into it.</h2>
-</div>
-<div class="share">
-<div class="card">
-<h3>Share a concise profile</h3>
-<p>Raw question responses are not included.</p>
-<button onclick="copySummary()">Copy profile summary</button>
-</div>
-<div class="card">
-<h3>One-page profile</h3>
-<p>Save a printable summary of the sample profile.</p>
-<button onclick="window.print()">Print / save as PDF</button>
-</div>
-</div>
-<div class="feedback">
-<div class="ey">Pilot feedback</div>
-<h2>How true and useful did this feel?</h2>
-<textarea rows="4" placeholder="What felt accurate, inaccurate, confusing or especially helpful?">
-</textarea>
-</div>
-</section>
-</section>
-</main>
-<script src="./engine.js">
-
-</script>
-<script src="./resources.js">
-
-</script>
-<script>
-const E=FormationEngine,R=FormationResources,G={Prayer:'Life with God',Scripture:'Life with God',Solitude:'Life with God',Fasting:'Life with God',Sabbath:'Life with God',Community:'Life with Others',Generosity:'Life with Others',Witness:'Life with Others',Service:'Life with Others',Environment:'Life with Self','Use of Time':'Life with Self',Sleep:'Life with Self','Physical Health':'Life with Self','Inner Life':'Life with Self'};const SAMPLE={Prayer:[4.2,4.3],Scripture:[4.4,4.5],Solitude:[2.3,3.6],Fasting:[2.4,2.3],Sabbath:[2.0,3.7],Community:[4.5,4.6],Generosity:[3.6,3.7],Witness:[3.0,3.1],Service:[4.0,4.1],Environment:[2.6,2.8],'Use of Time':[2.1,2.4],Sleep:[3.0,3.0],'Physical Health':[3.4,3.5],'Inner Life':[3.2,3.4]};let S={},IR;const C=['In personal prayer or quiet time with God','Through Scripture, study or reflection','In gathered worship or church','Through relationships and Christian community','While serving or caring for other people','In nature, creation or being outdoors','Through music, worship or creativity','In silence, solitude or stillness','In everyday life, work or family','I am finding it difficult to experience connection with God right now'];const B=[['Busyness, hurry or an overloaded schedule','busyness'],['My phone, social media or digital distraction','digital'],['Tiredness, poor sleep or lack of energy','tiredness'],['Work, study or other responsibilities','work'],['Family demands or caring responsibilities','work'],['Lack of consistent rhythms or habits','uncertain'],['Stress, anxiety or emotional load','stress'],['Disappointment, doubt or spiritual dryness','dryness'],['Feeling unsure where or how to begin','uncertain'],['Trying to do too much rather than focusing on what matters','overdoing']];function block(t,a,obj){return `<h2>${t}</h2>
-<p class="note">Choose up to three.</p>
-<div class="opts">${a.map((x,i)=>`<label class="opt">
-<input type="checkbox" data-i="${i}"> ${obj?x[0]:x}</label>`).join('')}</div>
-<input class="other" placeholder="Other…">`}function buildPre(){r1.innerHTML=block('Where do you currently experience the greatest sense of connection with God?',C,false);r2.innerHTML=block('What most often gets in the way of the life with God that you desire?',B,true);[...r1.querySelectorAll('[type=checkbox]')][3].checked=true;[...r1.querySelectorAll('[type=checkbox]')][1].checked=true;[...r2.querySelectorAll('[type=checkbox]')][0].checked=true;[...r2.querySelectorAll('[type=checkbox]')][1].checked=true}function avg(v){return v.length?v.reduce((a,b)=>a+b,0)/v.length:null}function stage(v){return v<2?'Emerging':v<3?'Establishing':v<4?'Deepening':'Sustaining'}const words={Emerging:'This is beginning to take shape in my life.',Establishing:'This is beginning to grow in my life.',Deepening:'This is increasingly shaping my life.',Sustaining:'It is woven throughout my life.'};const defs={Prayer:'honest relationship, listening and dependence on God',Scripture:'receiving God’s word and allowing it to shape ordinary life',Solitude:'being alone, unhurried and attentive to God without needing to achieve',Fasting:'attentiveness to desire, dependence and freedom through abstinence',Sabbath:'stopping, receiving rest and trusting God beyond productivity',Community:'belonging, vulnerability and experiencing God through shared Christian life',Generosity:'freedom, trust and open-handed participation in God’s generosity',Witness:'relational openness about Jesus and dependence on God in sharing faith',Service:'humble attentiveness to others and participation in the servant way of Jesus',Environment:'how physical and digital surroundings support or disrupt presence','Use of Time':'whether priorities, margin and pace create room for God and what matters most',Sleep:'receiving bodily limits and protecting rest that supports presence','Physical Health':'grateful care for the body as a means of availability','Inner Life':'emotional awareness, honesty and allowing God beneath the surface'};const practices={Prayer:'Spend five unhurried minutes on three days each week in gratitude, honesty and listening.',Scripture:'Read one short Gospel passage three times each week. Notice one phrase, one invitation and one response.',Solitude:'Put your phone somewhere else and spend ten unhurried minutes alone with God three times each week.',Fasting:'Choose one safe, simple form of abstinence for a defined period each week and use the space to pray and notice desire.',Sabbath:'Protect one extended block each week to stop ordinary productivity and make room for rest, worship and delight.',Community:'Have one honest conversation each week with a trusted Christian and share something real about your life with God.',Generosity:'Choose one deliberate act of financial or practical generosity each week that costs you enough to notice.',Witness:'Pray for one person and stay attentive to one natural opportunity each week for an honest spiritual conversation.',Service:'Notice one concrete need each week and respond without needing recognition.',Environment:'Create one phone-free, low-distraction place or period each day and protect it.','Use of Time':'Create one recurring block of margin each week and decide what you will say no to in order to protect it.',Sleep:'As circumstances allow, protect a consistent 30-minute wind-down before sleep.','Physical Health':'Choose one sustainable practice of movement, nourishment or recovery and repeat it three times each week.','Inner Life':'Once each day, pause to name one emotion, one desire and one concern honestly before God.'};function profile(){let data={};E.D.forEach(d=>{data[d]={core:SAMPLE[d][0],impact:SAMPLE[d][1]};S[d]=avg(SAMPLE[d])});let bars=[...r2.querySelectorAll('[type=checkbox]:checked')].map(x=>B[+x.dataset.i][1]);IR=E.interpret({data,barriers:bars,connections:[]});domains.innerHTML=E.D.map(d=>`<div class="domain">
-<div class="top">
-<b>${d}</b>
-<span class="pill">${stage(S[d])}</span>
-</div>
-<div class="bar">
-<div style="width:${Math.max(7,(S[d]-1)/4*100)}%">
-</div>
-</div>
-<div class="desc">
-<strong>${words[stage(S[d])]}</strong> ${d} reflects ${defs[d]}.</div>
-</div>`).join('');areas.innerHTML=['Life with God','Life with Others','Life with Self'].map(a=>{let ds=E.D.filter(d=>G[d]===a),v=avg(ds.map(d=>S[d])),st=stage(v),spread=Math.max(...ds.map(d=>S[d]))-Math.min(...ds.map(d=>S[d]));let base=a==='Life with God'?'These domains show how you make room for God, receive from him and allow these rhythms to shape ordinary life.':a==='Life with Others'?'These domains show how life with Jesus is expressed through belonging, open-handedness, witness and service.':'These domains show how the conditions of ordinary life support your capacity to be present to God, yourself and other people.';return `<div class="area">
-<div class="ey">${a}</div>
-<div class="status">${st}</div>
-<p>
-<strong>${words[st]}</strong>
-</p>
-<p>${base}${spread>1.4?' Your domains are quite varied, so this area contains both established strengths and places with less room in this season.':''}</p>
-</div>`}).join('');anchor.innerHTML=`<div class="ey">Your Anchor</div>
-<h2>${IR.anchors.join(' + ')||'No dominant Anchor yet'}</h2>
-<p>${IR.anchors.length?'These rhythms appear strongly present and spiritually life-giving. They may help support growth elsewhere.':'No domain currently stands out strongly enough to name as an Anchor.'}</p>`;let d=IR.attention;attention.innerHTML=`<div class="ey">Your Attention</div>
-<span class="confidence">${IR.confidence}</span>
-<h2>${d||'Open Invitation'}</h2>
-<h3>Why this?</h3>
-<div class="why">${explain(d)}</div>${IR.alternates.length?`<p>
-<b>Related areas:</b> ${IR.alternates.join(' + ')}</p>`:''}`;inv.textContent=`“${invite.value.trim()}”`;makePlan(d);makeResources(d||IR.alternates[0]||IR.anchors[0]);pre.classList.add('hide');prof.classList.remove('hide');scrollTo(0,0)}function explain(d){if(!d)return'No single area is sufficiently differentiated to justify naming it as your primary Attention. Rather than manufacture certainty, Formation leaves the invitation open for prayerful discernment.';let p=IR.rows[d].pattern;if(p==='Begin')return`${d} currently has less room in your life. A small, accessible experiment may create greater availability to God without turning formation into another performance target.`;if(p==='Make Room')return`When ${d.toLowerCase()} is present, it appears spiritually meaningful. The invitation may be modest consistency — making room for something that already seems fruitful.`;if(p==='Deepen')return`${d} already has a meaningful presence in your life, but its formative impact appears less strong. The invitation may be depth, slowness and relationship with God rather than doing more.`;return'This area may be worth holding gently in prayer and reflection.'}function makePlan(d){if(!d){plan.innerHTML='<h2>Let your own Invitation lead.</h2>
-<p>Choose one small four-week experiment that resonates with what you sense God may be inviting you into.</p>';return}let p=IR.rows[d].pattern,em=p==='Deepen'?'Keep roughly the same amount of practice, but slow it down and attend more deliberately to relationship with God.':p==='Make Room'?'Protect modest, repeatable room for something that already appears fruitful.':'Begin with one small, accessible expression. The goal is exploration, not instant consistency.';plan.innerHTML=`<div class="ey">${d} · ${stage(S[d])}</div>
-<h2>${practices[d]}</h2>
-<p>${em}</p>
-<div class="week">
-<b>Week 1 — Make space.</b> Establish the rhythm without trying to perfect it.</div>
-<div class="week">
-<b>Week 2 — Notice.</b> What happens within you and before God?</div>
-<div class="week">
-<b>Week 3 — Draw from your Anchor.</b> Let an established rhythm accompany the Attention if helpful.</div>
-<div class="week">
-<b>Week 4 — Discern.</b> What was life-giving, difficult or revealing? What could continue?</div>`}function makeResources(d){restitle.textContent=`Resources for ${d}`;let x=R[d]||R.Prayer,names=['Scripture','Book','Further reading','Podcast / teaching'];res.innerHTML=x.map((v,i)=>`<div class="resource">
-<div class="ey">${names[i]||'Resource'}</div>
-<h3>${v}</h3>
-<p>${i===0?'A biblical place to begin.':stage(S[d]||2)==='Emerging'?'An accessible next step for exploring this domain.':'A resource for going deeper without simply adding more activity.'}</p>
-</div>`).join('')}async function copySummary(){let t=`FORMATION V3.0 SAMPLE PROFILE\nAnchor: ${IR.anchors.join(' + ')||'—'}\nAttention: ${IR.attention||'Open Invitation'}\nInvitation: ${invite.value||'—'}\n\n${E.D.map(d=>`${d}: ${stage(S[d])}`).join('\n')}`;try{await navigator.clipboard.writeText(t);alert('Profile summary copied.')}catch(e){alert('Copy was unavailable in this browser.')}}buildPre()
-</script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Formation V3 · Sample Profile</title>
+    <style>
+      :root {
+        --bg: #f3efe6;
+        --paper: #fffdf8;
+        --ink: #203027;
+        --muted: #657269;
+        --g: #285641;
+        --deep: #173a2b;
+        --gold: #98744c;
+        --line: #d5ddd6;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font:
+          16px/1.56 -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+      }
+      .w {
+        max-width: 980px;
+        margin: auto;
+        padding: 24px 18px 90px;
+      }
+      .brand {
+        font-weight: 900;
+        letter-spacing: 0.12em;
+      }
+      .hero {
+        padding: 48px 0 20px;
+      }
+      .ey {
+        font-size: 0.73rem;
+        text-transform: uppercase;
+        letter-spacing: 0.13em;
+        font-weight: 900;
+        color: var(--gold);
+      }
+      h1 {
+        font-size: clamp(2.6rem, 7vw, 4.5rem);
+        line-height: 1;
+        margin: 0.15em 0 0.25em;
+      }
+      h2 {
+        font-size: clamp(1.6rem, 4vw, 2.3rem);
+      }
+      .lead {
+        font-size: 1.14rem;
+        color: #506057;
+      }
+      .card {
+        background: var(--paper);
+        border-radius: 22px;
+        padding: 26px;
+        margin: 15px 0;
+      }
+      .opts {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 9px;
+      }
+      .opt {
+        display: flex;
+        gap: 8px;
+        background: white;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 11px;
+      }
+      .other,
+      textarea {
+        width: 100%;
+        font: inherit;
+        padding: 12px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        margin-top: 9px;
+      }
+      .note,
+      .desc {
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+      button {
+        border: 0;
+        border-radius: 28px;
+        padding: 12px 18px;
+        background: var(--g);
+        color: white;
+        font-weight: 900;
+        font-size: 1rem;
+        cursor: pointer;
+      }
+      .hide {
+        display: none;
+      }
+      .stage {
+        margin: 65px 0;
+      }
+      .stagehead {
+        border-bottom: 1px solid #cbd4cd;
+        padding-bottom: 14px;
+        margin-bottom: 20px;
+      }
+      .domain {
+        margin: 25px 0;
+      }
+      .top {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+      }
+      .pill {
+        background: #e5ede6;
+        border-radius: 16px;
+        padding: 4px 9px;
+        font-size: 0.79rem;
+        font-weight: 900;
+      }
+      .bar {
+        height: 18px;
+        background: #e5e9e5;
+        border-radius: 20px;
+        overflow: hidden;
+        margin: 8px 0;
+      }
+      .bar div {
+        height: 100%;
+        background: #356c50;
+      }
+      .grid3,
+      .resgrid,
+      .share {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+      .area {
+        background: var(--paper);
+        border-radius: 20px;
+        padding: 23px;
+        border-top: 6px solid var(--g);
+      }
+      .status {
+        font:
+          1.4rem Georgia,
+          serif;
+      }
+      .aa {
+        background: var(--deep);
+        color: white;
+        border-radius: 30px;
+        padding: 40px 34px;
+        margin: 70px 0;
+      }
+      .aa .ey {
+        color: #e3c89e;
+      }
+      .intro {
+        font-size: 1.14rem;
+        color: #dce7df;
+      }
+      .definition {
+        display: grid;
+        grid-template-columns: 125px 1fr;
+        gap: 18px;
+        padding: 19px 0;
+        border-bottom: 1px solid #ffffff28;
+      }
+      .term {
+        font-weight: 900;
+        color: #e4c99f;
+      }
+      .result {
+        margin-top: 28px;
+        border: 1px solid #ffffff25;
+        background: #ffffff0b;
+        border-radius: 18px;
+        padding: 25px;
+      }
+      .confidence {
+        display: inline-block;
+        background: #f0debc;
+        color: #173a2b;
+        padding: 5px 9px;
+        border-radius: 15px;
+        font-size: 0.77rem;
+        font-weight: 900;
+      }
+      .why {
+        border-left: 3px solid #d7b985;
+        padding: 13px 15px;
+        background: #ffffff0b;
+        margin-top: 13px;
+      }
+      .bridge {
+        margin-top: 29px;
+        background: #f7f1e6;
+        color: var(--ink);
+        border-radius: 18px;
+        padding: 22px;
+      }
+      blockquote {
+        font:
+          1.3rem/1.4 Georgia,
+          serif;
+        margin: 7px 0;
+      }
+      .plan {
+        background: #e6eee7;
+        border-radius: 27px;
+        padding: 28px;
+      }
+      .week,
+      .resource {
+        background: white;
+        border-radius: 15px;
+        padding: 17px;
+        margin: 10px 0;
+      }
+      .resource {
+        border: 1px solid var(--line);
+      }
+      .feedback {
+        background: #f0e7d9;
+        border-radius: 20px;
+        padding: 23px;
+        margin-top: 20px;
+      }
+      .sampletag {
+        display: inline-block;
+        background: #f0debc;
+        border-radius: 15px;
+        padding: 5px 10px;
+        font-weight: 900;
+        font-size: 0.78rem;
+      }
+      @media (max-width: 720px) {
+        .opts,
+        .grid3,
+        .resgrid,
+        .share,
+        .definition {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media print {
+        #pre,
+        .feedback,
+        button {
+          display: none !important;
+        }
+        .w {
+          max-width: none;
+        }
+        .stage,
+        .aa {
+          break-inside: avoid;
+          margin: 25px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="w">
+      <div class="brand">FORMATION</div>
+      <section id="pre">
+        <div class="hero">
+          <div class="ey">Sample Experience · Stage 3</div>
+          <span class="sampletag">SAMPLE DATA ALREADY LOADED</span>
+          <h1>Before you see your profile</h1>
+          <p class="lead">
+            The assessment has already been completed using a deliberately
+            realistic sample profile. Use these contextual questions, then
+            experience Stages 4–8 exactly as a participant would.
+          </p>
+        </div>
+        <div class="card">
+          <div id="r1"></div>
+          <div id="r2" style="margin-top: 32px"></div>
+          <h2 style="margin-top: 32px">
+            What do you sense God may be inviting you into in this season?
+          </h2>
+          <textarea id="invite" rows="5">
+I sense God inviting me to become less hurried and more present to him in ordinary life.</textarea
+          >
+          <p>
+            <button onclick="profile()">See sample Formation Profile</button>
+          </p>
+        </div>
+      </section>
+      <section id="prof" class="hide">
+        <div class="hero">
+          <div class="ey">Sample Formation Profile</div>
+          <span class="sampletag">SAMPLE PROFILE</span>
+          <h1>A picture of this season.</h1>
+          <p class="lead">
+            These stages are not grades. They give language for noticing what is
+            taking shape, growing, shaping and sustaining your life with God.
+          </p>
+        </div>
+        <section class="stage">
+          <div class="stagehead">
+            <div class="ey">Stage 4 · Domain Responses</div>
+            <h2>Your fourteen domains</h2>
+          </div>
+          <div class="card" id="domains"></div>
+        </section>
+        <section class="stage">
+          <div class="stagehead">
+            <div class="ey">Stage 5 · Three Areas</div>
+            <h2>Step back and see the wider picture.</h2>
+          </div>
+          <div class="grid3" id="areas"></div>
+        </section>
+        <section class="aa">
+          <div class="ey">Stage 6 · What We Notice</div>
+          <h1>Anchor & Attention</h1>
+          <p class="intro">
+            This is the interpretive centre of your profile. It asks what is
+            already supporting your formation and where gentle, intentional care
+            may be fruitful next.
+          </p>
+          <div class="definition">
+            <div class="term">ANCHOR</div>
+            <div>
+              <strong>What is already helping hold and shape you.</strong>
+              <br />A rhythm you may be able to draw from as you grow elsewhere.
+            </div>
+          </div>
+          <div class="definition">
+            <div class="term">ATTENTION</div>
+            <div>
+              <strong>What may benefit from gentle, intentional care.</strong>
+              <br />Not simply your lowest result: Formation considers the
+              pattern of your profile and the context you described.
+            </div>
+          </div>
+          <div class="result" id="anchor"></div>
+          <div class="result" id="attention"></div>
+          <div class="bridge">
+            <div class="ey">Invitation · In your own words</div>
+            <blockquote id="inv"></blockquote>
+            <p>
+              Hold your own words alongside Formation's suggestion. The profile
+              offers a formation hypothesis for reflection; prayerful
+              discernment remains central.
+            </p>
+          </div>
+        </section>
+        <section class="stage">
+          <div class="stagehead">
+            <div class="ey">Stage 7 · Formation Plan</div>
+            <h2>One four-week experiment.</h2>
+            <p>
+              The goal is not completion. It is to notice whether this rhythm
+              helps you become more present to God.
+            </p>
+          </div>
+          <div class="plan" id="plan"></div>
+          <div class="card">
+            <div class="ey">Resources</div>
+            <h2 id="restitle"></h2>
+            <p class="lead">
+              Start with whatever is useful. You do not need to work through
+              everything.
+            </p>
+            <div class="resgrid" id="res"></div>
+          </div>
+        </section>
+        <section class="stage">
+          <div class="stagehead">
+            <div class="ey">Stage 8 · Sharing</div>
+            <h2>Keep it, share it, or invite someone into it.</h2>
+          </div>
+          <div class="share">
+            <div class="card">
+              <h3>Share a concise profile</h3>
+              <p>Raw question responses are not included.</p>
+              <button onclick="copySummary()">Copy profile summary</button>
+            </div>
+            <div class="card">
+              <h3>One-page profile</h3>
+              <p>Save a printable summary of the sample profile.</p>
+              <button onclick="window.print()">Print / save as PDF</button>
+            </div>
+          </div>
+          <div class="feedback">
+            <div class="ey">Pilot feedback</div>
+            <h2>How true and useful did this feel?</h2>
+            <textarea
+              rows="4"
+              placeholder="What felt accurate, inaccurate, confusing or especially helpful?"
+            ></textarea>
+          </div>
+        </section>
+      </section>
+    </main>
+    <script src="./engine.js"></script>
+    <script src="./resources.js"></script>
+    <script>
+      const E=FormationEngine,R=FormationResources,G={Prayer:'Life with God',Scripture:'Life with God',Solitude:'Life with God',Fasting:'Life with God',Sabbath:'Life with God',Community:'Life with Others',Generosity:'Life with Others',Witness:'Life with Others',Service:'Life with Others',Environment:'Life with Self','Use of Time':'Life with Self',Sleep:'Life with Self','Physical Health':'Life with Self','Inner Life':'Life with Self'};const SAMPLE={Prayer:[4.2,4.3],Scripture:[4.4,4.5],Solitude:[2.3,3.6],Fasting:[2.4,2.3],Sabbath:[2.0,3.7],Community:[4.5,4.6],Generosity:[3.6,3.7],Witness:[3.0,3.1],Service:[4.0,4.1],Environment:[2.6,2.8],'Use of Time':[2.1,2.4],Sleep:[3.0,3.0],'Physical Health':[3.4,3.5],'Inner Life':[3.2,3.4]};let S={},IR;const C=['In personal prayer or quiet time with God','Through Scripture, study or reflection','In gathered worship or church','Through relationships and Christian community','While serving or caring for other people','In nature, creation or being outdoors','Through music, worship or creativity','In silence, solitude or stillness','In everyday life, work or family','I am finding it difficult to experience connection with God right now'];const B=[['Busyness, hurry or an overloaded schedule','busyness'],['My phone, social media or digital distraction','digital'],['Tiredness, poor sleep or lack of energy','tiredness'],['Work, study or other responsibilities','work'],['Family demands or caring responsibilities','work'],['Lack of consistent rhythms or habits','uncertain'],['Stress, anxiety or emotional load','stress'],['Disappointment, doubt or spiritual dryness','dryness'],['Feeling unsure where or how to begin','uncertain'],['Trying to do too much rather than focusing on what matters','overdoing']];function block(t,a,obj){return `<h2>${t}</h2>
+      <p class="note">Choose up to three.</p>
+      <div class="opts">${a.map((x,i)=>`<label class="opt">
+      <input type="checkbox" data-i="${i}"> ${obj?x[0]:x}</label>`).join('')}</div>
+      <input class="other" placeholder="Other…">`}function buildPre(){r1.innerHTML=block('Where do you currently experience the greatest sense of connection with God?',C,false);r2.innerHTML=block('What most often gets in the way of the life with God that you desire?',B,true);[...r1.querySelectorAll('[type=checkbox]')][3].checked=true;[...r1.querySelectorAll('[type=checkbox]')][1].checked=true;[...r2.querySelectorAll('[type=checkbox]')][0].checked=true;[...r2.querySelectorAll('[type=checkbox]')][1].checked=true}function avg(v){return v.length?v.reduce((a,b)=>a+b,0)/v.length:null}function stage(v){return v<2?'Emerging':v<3?'Establishing':v<4?'Deepening':'Sustaining'}const words={Emerging:'This is beginning to take shape in my life.',Establishing:'This is beginning to grow in my life.',Deepening:'This is increasingly shaping my life.',Sustaining:'It is woven throughout my life.'};const defs={Prayer:'honest relationship, listening and dependence on God',Scripture:'receiving God’s word and allowing it to shape ordinary life',Solitude:'being alone, unhurried and attentive to God without needing to achieve',Fasting:'attentiveness to desire, dependence and freedom through abstinence',Sabbath:'stopping, receiving rest and trusting God beyond productivity',Community:'belonging, vulnerability and experiencing God through shared Christian life',Generosity:'freedom, trust and open-handed participation in God’s generosity',Witness:'relational openness about Jesus and dependence on God in sharing faith',Service:'humble attentiveness to others and participation in the servant way of Jesus',Environment:'how physical and digital surroundings support or disrupt presence','Use of Time':'whether priorities, margin and pace create room for God and what matters most',Sleep:'receiving bodily limits and protecting rest that supports presence','Physical Health':'grateful care for the body as a means of availability','Inner Life':'emotional awareness, honesty and allowing God beneath the surface'};const practices={Prayer:'Spend five unhurried minutes on three days each week in gratitude, honesty and listening.',Scripture:'Read one short Gospel passage three times each week. Notice one phrase, one invitation and one response.',Solitude:'Put your phone somewhere else and spend ten unhurried minutes alone with God three times each week.',Fasting:'Choose one safe, simple form of abstinence for a defined period each week and use the space to pray and notice desire.',Sabbath:'Protect one extended block each week to stop ordinary productivity and make room for rest, worship and delight.',Community:'Have one honest conversation each week with a trusted Christian and share something real about your life with God.',Generosity:'Choose one deliberate act of financial or practical generosity each week that costs you enough to notice.',Witness:'Pray for one person and stay attentive to one natural opportunity each week for an honest spiritual conversation.',Service:'Notice one concrete need each week and respond without needing recognition.',Environment:'Create one phone-free, low-distraction place or period each day and protect it.','Use of Time':'Create one recurring block of margin each week and decide what you will say no to in order to protect it.',Sleep:'As circumstances allow, protect a consistent 30-minute wind-down before sleep.','Physical Health':'Choose one sustainable practice of movement, nourishment or recovery and repeat it three times each week.','Inner Life':'Once each day, pause to name one emotion, one desire and one concern honestly before God.'};function profile(){let data={};E.D.forEach(d=>{data[d]={core:SAMPLE[d][0],impact:SAMPLE[d][1]};S[d]=avg(SAMPLE[d])});let bars=[...r2.querySelectorAll('[type=checkbox]:checked')].map(x=>B[+x.dataset.i][1]);IR=E.interpret({data,barriers:bars,connections:[]});domains.innerHTML=E.D.map(d=>`<div class="domain">
+      <div class="top">
+      <b>${d}</b>
+      <span class="pill">${stage(S[d])}</span>
+      </div>
+      <div class="bar">
+      <div style="width:${Math.max(7,(S[d]-1)/4*100)}%">
+      </div>
+      </div>
+      <div class="desc">
+      <strong>${words[stage(S[d])]}</strong> ${d} reflects ${defs[d]}.</div>
+      </div>`).join('');areas.innerHTML=['Life with God','Life with Others','Life with Self'].map(a=>{let ds=E.D.filter(d=>G[d]===a),v=avg(ds.map(d=>S[d])),st=stage(v),spread=Math.max(...ds.map(d=>S[d]))-Math.min(...ds.map(d=>S[d]));let base=a==='Life with God'?'These domains show how you make room for God, receive from him and allow these rhythms to shape ordinary life.':a==='Life with Others'?'These domains show how life with Jesus is expressed through belonging, open-handedness, witness and service.':'These domains show how the conditions of ordinary life support your capacity to be present to God, yourself and other people.';return `<div class="area">
+      <div class="ey">${a}</div>
+      <div class="status">${st}</div>
+      <p>
+      <strong>${words[st]}</strong>
+      </p>
+      <p>${base}${spread>1.4?' Your domains are quite varied, so this area contains both established strengths and places with less room in this season.':''}</p>
+      </div>`}).join('');anchor.innerHTML=`<div class="ey">Your Anchor</div>
+      <h2>${IR.anchors.join(' + ')||'No dominant Anchor yet'}</h2>
+      <p>${IR.anchors.length?'These rhythms appear strongly present and spiritually life-giving. They may help support growth elsewhere.':'No domain currently stands out strongly enough to name as an Anchor.'}</p>`;let d=IR.attention;attention.innerHTML=`<div class="ey">Your Attention</div>
+      <span class="confidence">${IR.confidence}</span>
+      <h2>${d||'Open Invitation'}</h2>
+      <h3>Why this?</h3>
+      <div class="why">${explain(d)}</div>${IR.alternates.length?`<p>
+      <b>Related areas:</b> ${IR.alternates.join(' + ')}</p>`:''}`;inv.textContent=`“${invite.value.trim()}”`;makePlan(d);makeResources(d||IR.alternates[0]||IR.anchors[0]);pre.classList.add('hide');prof.classList.remove('hide');scrollTo(0,0)}function explain(d){if(!d)return'No single area is sufficiently differentiated to justify naming it as your primary Attention. Rather than manufacture certainty, Formation leaves the invitation open for prayerful discernment.';let p=IR.rows[d].pattern;if(p==='Begin')return`${d} currently has less room in your life. A small, accessible experiment may create greater availability to God without turning formation into another performance target.`;if(p==='Make Room')return`When ${d.toLowerCase()} is present, it appears spiritually meaningful. The invitation may be modest consistency — making room for something that already seems fruitful.`;if(p==='Deepen')return`${d} already has a meaningful presence in your life, but its formative impact appears less strong. The invitation may be depth, slowness and relationship with God rather than doing more.`;return'This area may be worth holding gently in prayer and reflection.'}function makePlan(d){if(!d){plan.innerHTML='<h2>Let your own Invitation lead.</h2>
+      <p>Choose one small four-week experiment that resonates with what you sense God may be inviting you into.</p>';return}let p=IR.rows[d].pattern,em=p==='Deepen'?'Keep roughly the same amount of practice, but slow it down and attend more deliberately to relationship with God.':p==='Make Room'?'Protect modest, repeatable room for something that already appears fruitful.':'Begin with one small, accessible expression. The goal is exploration, not instant consistency.';plan.innerHTML=`<div class="ey">${d} · ${stage(S[d])}</div>
+      <h2>${practices[d]}</h2>
+      <p>${em}</p>
+      <div class="week">
+      <b>Week 1 — Make space.</b> Establish the rhythm without trying to perfect it.</div>
+      <div class="week">
+      <b>Week 2 — Notice.</b> What happens within you and before God?</div>
+      <div class="week">
+      <b>Week 3 — Draw from your Anchor.</b> Let an established rhythm accompany the Attention if helpful.</div>
+      <div class="week">
+      <b>Week 4 — Discern.</b> What was life-giving, difficult or revealing? What could continue?</div>`}function makeResources(d){restitle.textContent=`Resources for ${d}`;let x=R[d]||R.Prayer,names=['Scripture','Book','Further reading','Podcast / teaching'];res.innerHTML=x.map((v,i)=>`<div class="resource">
+      <div class="ey">${names[i]||'Resource'}</div>
+      <h3>${v}</h3>
+      <p>${i===0?'A biblical place to begin.':stage(S[d]||2)==='Emerging'?'An accessible next step for exploring this domain.':'A resource for going deeper without simply adding more activity.'}</p>
+      </div>`).join('')}async function copySummary(){let t=`FORMATION V3.0 SAMPLE PROFILE\nAnchor: ${IR.anchors.join(' + ')||'—'}\nAttention: ${IR.attention||'Open Invitation'}\nInvitation: ${invite.value||'—'}\n\n${E.D.map(d=>`${d}: ${stage(S[d])}`).join('\n')}`;try{await navigator.clipboard.writeText(t);alert('Profile summary copied.')}catch(e){alert('Copy was unavailable in this browser.')}}buildPre()
+    </script>
+  </body>
 </html>
