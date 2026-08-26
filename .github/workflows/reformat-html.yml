@@ -1,0 +1,45 @@
+name: Reformat large HTML copies
+
+on:
+  push:
+    paths:
+      - '.github/workflows/reformat-html.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  reformat:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create readable copies
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+
+          def reformat(src, dst):
+              text = Path(src).read_text(encoding='utf-8')
+              # Formatting only: insert line breaks between HTML tags and around
+              # style/script boundaries. Text, attributes, CSS and JS are unchanged.
+              text = re.sub(r'><', '>\n<', text)
+              text = text.replace('<style>', '<style>\n').replace('</style>', '\n</style>')
+              text = text.replace('<script>', '<script>\n').replace('</script>', '\n</script>')
+              text = text.replace(';}', ';}\n')
+              Path(dst).write_text(text, encoding='utf-8')
+
+          reformat('pilot.html', 'pilot-readable.html')
+          reformat('sample.html', 'sample-readable.html')
+      - name: Commit readable copies
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add pilot-readable.html sample-readable.html
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Create multiline V3 HTML copies"
+            git push
+          fi
