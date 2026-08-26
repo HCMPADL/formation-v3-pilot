@@ -1,0 +1,40 @@
+name: Extract app JS for deployment
+
+on:
+  push:
+    paths:
+      - '.github/workflows/extract-app-js.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extract final inline scripts
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+          for html, js in [('pilot-readable.html','pilot-app.js'),('sample-readable.html','sample-app.js')]:
+              text=Path(html).read_text(encoding='utf-8')
+              matches=list(re.finditer(r'<script>(.*?)</script>', text, flags=re.S))
+              if not matches:
+                  raise SystemExit(f'No inline script in {html}')
+              m=matches[-1]
+              code=m.group(1).strip()+'\n'
+              text=text[:m.start()]+f'<script src="./{js}"></script>'+text[m.end():]
+              Path(html).write_text(text,encoding='utf-8')
+              Path(js).write_text(code,encoding='utf-8')
+      - name: Format deploy sources
+        run: npx --yes prettier@3.3.3 --write pilot-readable.html sample-readable.html pilot-app.js sample-app.js
+      - name: Commit deploy sources
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add pilot-readable.html sample-readable.html pilot-app.js sample-app.js
+          git commit -m "Extract readable V3 app scripts" || exit 0
+          git push
