@@ -29,8 +29,6 @@ jobs:
               text=text[:m.start()]+f'<script src="./{js}"></script>'+text[m.end():]
               Path(html).write_text(text,encoding='utf-8')
               Path(js).write_text(code,encoding='utf-8')
-      - name: Format deploy sources
-        run: npx --yes prettier@3.3.3 --write pilot-readable.html sample-readable.html pilot-app.js sample-app.js
       - name: Commit deploy sources
         run: |
           git config user.name "github-actions[bot]"
