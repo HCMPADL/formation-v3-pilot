@@ -18,6 +18,17 @@
       * {
         box-sizing: border-box;
       }
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
       body {
         margin: 0;
         background: var(--bg);
@@ -112,6 +123,13 @@
         font-weight: 900;
         font-size: 1rem;
         cursor: pointer;
+      }
+      button:focus-visible,
+      a:focus-visible,
+      input:focus-visible,
+      textarea:focus-visible {
+        outline: 3px solid #d09c53;
+        outline-offset: 3px;
       }
       .ghost {
         background: white;
@@ -278,6 +296,14 @@
         padding: 23px;
         margin-top: 20px;
       }
+      .print-summary {
+        display: none;
+      }
+      #shareStatus:not(:empty) {
+        margin-top: 12px;
+        color: var(--g);
+        font-weight: 800;
+      }
       @media (max-width: 720px) {
         .scale,
         .opts,
@@ -287,21 +313,89 @@
         .definition {
           grid-template-columns: 1fr;
         }
+        .w {
+          padding-left: 14px;
+          padding-right: 14px;
+        }
+        .hero {
+          padding-top: 34px;
+        }
+        .card,
+        .aa,
+        .plan {
+          padding: 22px 18px;
+        }
+        button,
+        .scale label,
+        .opt {
+          min-height: 44px;
+        }
       }
       @media print {
+        @page {
+          size: A4 portrait;
+          margin: 11mm;
+        }
+        body {
+          background: white;
+          font-size: 9.5pt;
+          line-height: 1.25;
+        }
         #assess,
         #pre,
-        .feedback,
+        #prof > .hero,
+        #prof > .stage,
+        #prof > .aa,
         button {
           display: none !important;
         }
         .w {
           max-width: none;
+          padding: 0;
         }
-        .stage,
-        .aa {
-          break-inside: avoid;
-          margin: 25px 0;
+        .print-summary {
+          display: block !important;
+          color: #16251c;
+        }
+        .print-summary h1 {
+          font-size: 24pt;
+          margin: 3mm 0 2mm;
+        }
+        .print-summary h2 {
+          font-size: 12pt;
+          margin: 3mm 0 1.5mm;
+        }
+        .print-meta,
+        .print-note {
+          color: #526158;
+        }
+        .print-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 1.5mm 6mm;
+        }
+        .print-row {
+          display: flex;
+          justify-content: space-between;
+          gap: 4mm;
+          border-bottom: 0.2mm solid #d5ddd6;
+          padding: 1mm 0;
+        }
+        .print-callout {
+          border-left: 1.2mm solid #285641;
+          background: #edf3ee;
+          padding: 2.5mm 3mm;
+          margin: 2mm 0;
+        }
+        .print-resources {
+          columns: 2;
+          margin: 1mm 0 0;
+          padding-left: 5mm;
+        }
+        .print-summary footer {
+          margin-top: 3mm;
+          border-top: 0.2mm solid #d5ddd6;
+          padding-top: 2mm;
         }
       }
     </style>
@@ -321,10 +415,17 @@
         </div>
         <div class="card">
           <div class="top">
-            <b id="count"> </b>
+            <b id="count" aria-live="polite"> </b>
             <span id="dn"> </span>
           </div>
-          <div class="progress">
+          <div
+            class="progress"
+            id="progress"
+            role="progressbar"
+            aria-labelledby="count"
+            aria-valuemin="1"
+            aria-valuenow="1"
+          >
             <div id="prog"></div>
           </div>
           <div class="q" id="qt"></div>
@@ -334,8 +435,10 @@
             to answer</label
           >
           <div class="nav" style="margin-top: 20px">
-            <button class="ghost" onclick="back()">Back</button>
-            <button onclick="next()">Next</button>
+            <button id="backButton" type="button" class="ghost" onclick="back()">
+              Back to scale
+            </button>
+            <button id="nextButton" type="button" onclick="next()">Next</button>
           </div>
         </div>
       </section>
@@ -360,7 +463,7 @@
             placeholder="I sense God may be inviting me to…"
           ></textarea>
           <p>
-            <button onclick="profile()">See my Formation Profile</button>
+            <button type="button" onclick="profile()">See my Formation Profile</button>
           </p>
         </div>
       </section>
@@ -455,7 +558,9 @@
                 choose with a trusted person, pastor, small-group leader or
                 spiritual companion.
               </p>
-              <button onclick="copySummary()">Copy profile summary</button>
+              <button type="button" onclick="copySummary()">
+                Copy profile summary
+              </button>
             </div>
             <div class="card">
               <h3>One-page profile</h3>
@@ -463,9 +568,12 @@
                 Save a printable summary of your domains, three areas, Anchor,
                 Attention, Invitation, rhythm and selected resources.
               </p>
-              <button onclick="window.print()">Print / save as PDF</button>
+              <button type="button" onclick="printProfile()">
+                Print / save as PDF
+              </button>
             </div>
           </div>
+          <p id="shareStatus" role="status" aria-live="polite"></p>
           <div class="feedback">
             <div class="ey">Pilot feedback</div>
             <h2>How true and useful did this feel?</h2>
@@ -475,6 +583,7 @@
             ></textarea>
           </div>
         </section>
+        <section id="printSummary" class="print-summary" aria-hidden="true"></section>
       </section>
     </main>
     <script src="./engine.js"></script>
