@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Formation Algorithm Harness</title>
+    <style>
+      :root { --bg:#f3efe6; --paper:#fffdf8; --ink:#203027; --muted:#66736b; --g:#285641; --deep:#173a2b; --gold:#98744c; --line:#d5ddd6; }
+      * { box-sizing: border-box; }
+      .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+      body { margin:0; background:var(--bg); color:var(--ink); font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+      main { max-width:1380px; margin:auto; padding:20px; }
+      .brand { font-weight:900; letter-spacing:.12em; }
+      .ey { font-size:.72rem; text-transform:uppercase; letter-spacing:.13em; font-weight:900; color:var(--gold); }
+      h1 { font-size:clamp(2.2rem,5vw,4rem); line-height:1; margin:.12em 0; }
+      .sub { color:var(--muted); max-width:760px; }
+      .tabs,.toolbar,.presets { display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin:18px 0; }
+      button,.btn { border:1px solid var(--line); border-radius:999px; padding:11px 16px; background:#fff; color:var(--g); font-weight:900; cursor:pointer; min-height:44px; }
+      button.active,.btn.primary { background:var(--g); color:#fff; border-color:var(--g); }
+      button:focus-visible,input:focus-visible,a:focus-visible { outline:3px solid #d09c53; outline-offset:3px; }
+      .panel { display:none; }
+      .panel.active { display:block; }
+      .grid { display:grid; grid-template-columns:minmax(620px,1.35fr) minmax(350px,.65fr); gap:16px; }
+      .card { background:var(--paper); border-radius:20px; padding:20px; border:1px solid #e4e0d8; }
+      .domainhead,.domainrow { display:grid; grid-template-columns:155px 1fr 58px 1fr 58px 105px; gap:10px; align-items:center; }
+      .domainhead { font-size:.72rem; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); font-weight:900; padding:0 8px 8px; }
+      .domainrow { padding:10px 8px; border-top:1px solid #ebe7df; }
+      .domainrow input[type=range] { width:100%; accent-color:var(--g); }
+      .value { text-align:center; background:#ecefe9; border-radius:9px; padding:4px; font-variant-numeric:tabular-nums; }
+      .pattern { font-size:.78rem; font-weight:900; color:var(--g); }
+      .quick .impact { opacity:.28; pointer-events:none; }
+      .checks { display:grid; grid-template-columns:repeat(2,1fr); gap:6px; }
+      .check { display:flex; gap:7px; align-items:start; padding:8px; background:#fff; border:1px solid var(--line); border-radius:10px; }
+      .resultbox { background:var(--deep); color:#fff; border-radius:20px; padding:22px; position:sticky; top:15px; }
+      .resultbox .ey { color:#e3c89e; }
+      .big { font:2rem/1.05 Georgia,serif; margin:7px 0 16px; }
+      .tag { display:inline-block; background:#f0debc; color:#173a2b; padding:5px 9px; border-radius:999px; font-size:.73rem; font-weight:900; }
+      .section { padding:16px 0; border-top:1px solid #ffffff28; }
+      .section:first-of-type { border-top:0; }
+      .small { font-size:.84rem; color:#d5dfd8; }
+      .metrics { display:grid; grid-template-columns:repeat(2,1fr); gap:8px; }
+      .metric { background:#ffffff0b; border:1px solid #ffffff18; border-radius:12px; padding:10px; }
+      .metric b { display:block; font-size:1.15rem; }
+      table { width:100%; border-collapse:collapse; font-size:.8rem; }
+      th,td { text-align:left; padding:7px 5px; border-top:1px solid #ffffff20; }
+      pre { white-space:pre-wrap; background:#102a20; border-radius:12px; padding:12px; font:12px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace; max-height:300px; overflow:auto; }
+      .stressgrid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
+      .stress { background:#fff; border:1px solid var(--line); border-radius:14px; padding:13px; }
+      .stress strong { display:block; margin-bottom:4px; }
+      .pass { color:#285641; font-weight:900; }
+      .fail { color:#9d2e27; font-weight:900; }
+      .note { padding:12px; border-radius:12px; background:#e7eee8; color:#30483a; margin-top:12px; }
+      @media(max-width:1000px) { .grid{grid-template-columns:1fr}.resultbox{position:static}.domainhead,.domainrow{grid-template-columns:130px 1fr 55px 1fr 55px 95px} }
+      @media(max-width:720px) { main{padding:16px 12px}.domainhead{display:none}.domainrow{grid-template-columns:1fr 1fr 50px}.domainrow .impact{grid-column:2}.domainrow .pattern{grid-column:1/-1}.checks,.stressgrid{grid-template-columns:1fr} }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="brand">FORMATION</div>
+      <div class="ey" style="margin-top:20px">V3.0 · Algorithm Harness</div>
+      <h1>Formation development harness</h1>
+      <p class="sub">Shape synthetic profiles, inspect why the current engine chooses an Anchor or Attention, and run deterministic edge-case checks.</p>
+      <nav class="tabs" aria-label="Harness sections">
+        <button type="button" data-tab="sim">Simulator</button>
+        <button type="button" data-tab="stress">Stress tests</button>
+        <a class="btn" href="./development.html">Back to development suite</a>
+      </nav>
+      <section id="sim" class="panel">
+        <div class="grid">
+          <div class="card">
+            <div class="toolbar">
+              <button id="quickBtn" type="button">56-question model</button>
+              <button id="deepBtn" type="button">112-question model</button>
+              <button id="resetBtn" type="button">Reset</button>
+              <button id="randomBtn" type="button">Random profile</button>
+            </div>
+            <div class="ey">Stress presets</div>
+            <div class="presets">
+              <button type="button" data-preset="high">Uniform high</button>
+              <button type="button" data-preset="low">Uniform low</button>
+              <button type="button" data-preset="mid">Uniform middle</button>
+              <button type="button" data-preset="oneweak">One clear weakness</button>
+              <button type="button" data-preset="onestrong">One clear strength</button>
+              <button type="button" data-preset="makeroom">Make Room</button>
+              <button type="button" data-preset="deepen">Deepen</button>
+              <button type="button" data-preset="ties">Anchor tie</button>
+            </div>
+            <h2>Domain inputs</h2>
+            <div class="domainhead" aria-hidden="true"><span>Domain</span><span>Presence / score</span><span>Value</span><span>Impact</span><span>Value</span><span>Pattern</span></div>
+            <div id="domains"></div>
+            <h2>Context barriers</h2>
+            <p class="sub">Context can break a close tie, but it cannot manufacture weakness.</p>
+            <div class="checks" id="barriers"></div>
+          </div>
+          <aside class="resultbox" aria-live="polite">
+            <div class="ey">Algorithm V3.0</div>
+            <div class="section"><div class="small">ANCHOR</div><div class="big" id="anchor">—</div><div id="anchorWhy" class="small"></div></div>
+            <div class="section"><div class="small">ATTENTION</div><span class="tag" id="confidence">—</span><div class="big" id="attention">—</div><div id="attentionWhy" class="small"></div></div>
+            <div class="section"><div class="metrics"><div class="metric"><span class="small">Profile median</span><b id="median">—</b></div><div class="metric"><span class="small">Overall mean</span><b id="overall">—</b></div><div class="metric"><span class="small">Attention gap</span><b id="gap">—</b></div><div class="metric"><span class="small">Mode</span><b id="modeOut">—</b></div></div></div>
+            <div class="section"><div class="small">Candidate inspector</div><table><thead><tr><th>Domain</th><th>Pattern</th><th>Opportunity</th></tr></thead><tbody id="candidates"></tbody></table></div>
+            <div class="section"><div class="small">Raw output</div><pre id="raw"></pre></div>
+          </aside>
+        </div>
+      </section>
+      <section id="stress" class="panel">
+        <div class="card">
+          <div class="ey">Algorithm V3.0 deterministic checks</div>
+          <h2>Edge-case suite</h2>
+          <p id="stressSummary" role="status"></p>
+          <div class="stressgrid" id="stressgrid"></div>
+          <div class="note">These checks protect the guardrails: no forced Anchor or Attention, broad low-profile recognition, deep-mode pattern integrity, tie withholding, and context that informs without manufacturing weakness.</div>
+        </div>
+      </section>
+    </main>
+    <script src="./engine.js"></script>
+    <script src="./algorithm-harness.js"></script>
+  </body>
+</html>

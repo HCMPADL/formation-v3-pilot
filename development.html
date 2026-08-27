@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Formation Development Harness</title>
+    <style>
+      :root {
+        --bg: #f3efe6;
+        --paper: #fffdf8;
+        --ink: #203027;
+        --g: #285641;
+        --gold: #98744c;
+        --line: #d5ddd6;
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      main { max-width: 1050px; margin: auto; padding: 35px 18px 80px; }
+      .brand { font-weight: 900; letter-spacing: .12em; }
+      .ey { font-size: .73rem; text-transform: uppercase; letter-spacing: .13em; font-weight: 900; color: var(--gold); }
+      h1 { font-size: clamp(2.8rem, 8vw, 5rem); line-height: 1; margin: .15em 0; }
+      .lead { font-size: 1.15rem; color: #526158; max-width: 760px; }
+      .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 34px; }
+      .card { background: var(--paper); border: 1px solid var(--line); border-radius: 23px; padding: 27px; }
+      .btn { display: inline-block; background: var(--g); color: white; text-decoration: none; border-radius: 28px; padding: 12px 17px; font-weight: 900; min-height: 44px; }
+      .btn:focus-visible { outline: 3px solid #d09c53; outline-offset: 3px; }
+      .status { margin-top: 30px; background: #e7eee8; border-radius: 18px; padding: 18px; }
+      @media (max-width: 700px) { .grid { grid-template-columns: 1fr; } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="brand">FORMATION</div>
+      <div class="ey" style="margin-top: 38px">Development Harness · Release Candidate</div>
+      <h1>Build. Test. Discern.</h1>
+      <p class="lead">The complete participant experience, algorithm simulator, post-assessment sample and deterministic stress tests now live in this single GitHub Pages release.</p>
+      <div class="grid">
+        <section class="card">
+          <div class="ey">1 · Pilot</div>
+          <h2>Full assessment experience</h2>
+          <p>Run the 56-question or 112-question assessment from introduction through results.</p>
+          <a class="btn" href="./index.html">Open full experience</a>
+        </section>
+        <section class="card">
+          <div class="ey">2 · Algorithm Harness</div>
+          <h2>Interrogate Anchor &amp; Attention</h2>
+          <p>Manipulate synthetic profiles and inspect the current interpretation engine.</p>
+          <a class="btn" href="./algorithm.html#sim">Open algorithm harness</a>
+        </section>
+        <section class="card">
+          <div class="ey">3 · Post-assessment</div>
+          <h2>Participant results experience</h2>
+          <p>Review domains, Three Areas, Anchor, Attention, plan, resources and sharing.</p>
+          <a class="btn" href="./sample.html">Open post-assessment sample</a>
+        </section>
+        <section class="card">
+          <div class="ey">4 · Stress Tests</div>
+          <h2>Edge cases &amp; robustness</h2>
+          <p>Run ties, uniform profiles, weak/strong domains, Make Room, Deepen and context tests.</p>
+          <a class="btn" href="./algorithm.html#stress">Open stress tests</a>
+        </section>
+      </div>
+      <div class="status"><strong>Release hardening:</strong> local routes remove the temporary cross-deployment dependency. Automated checks cover both assessments, navigation state, results, resources, sharing, printing and mobile overflow.</div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "formation-v3-pilot",
+  "version": "3.0.0",
+  "private": true,
+  "scripts": {
+    "test": "npm run test:unit && npm run test:e2e",
+    "test:unit": "node --test tests/engine.test.js",
+    "test:e2e": "playwright test",
+    "check:links": "node tests/check-resource-links.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.55.0"
+  }
+}
