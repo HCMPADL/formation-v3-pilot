@@ -26,8 +26,12 @@ jobs:
       - name: Prepare site
         run: |
           mkdir -p _site
-          cp index.html scale.html pilot.html pilot-readable.html sample-readable.html engine.js resources.js questions.js pilot-app.js sample-app.js sample-enhancements.js _site/
+          cp index.html scale.html pilot.html pilot-readable.html sample-readable.html development.html algorithm.html engine.js resources.js questions.js pilot-app.js sample-app.js sample-enhancements.js area-insights.js algorithm-harness.js _site/
           cp sample-readable.html _site/sample.html
+          test -f _site/development.html
+          test -f _site/algorithm.html
+          test -f _site/algorithm-harness.js
+          test -f _site/area-insights.js
           touch _site/.nojekyll
       - name: Setup Pages
         uses: actions/configure-pages@v5
