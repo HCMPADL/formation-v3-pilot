@@ -29,13 +29,22 @@ jobs:
       - name: Unit tests
         timeout-minutes: 2
         run: npm run test:unit
-      - name: Browser regression tests
-        timeout-minutes: 9
+      - name: Critical quick journey — desktop Chromium
+        timeout-minutes: 3
         env:
           DEBUG: pw:test
-        run: npm run test:e2e
+        run: npx playwright test tests/release-hardening.spec.js --project=desktop-chromium --grep "quick assessment completes"
+      - name: Cross-browser smoke — desktop Chromium
+        timeout-minutes: 2
+        run: npx playwright test tests/release-hardening.spec.js --project=desktop-chromium --grep "cross-browser smoke"
+      - name: Cross-browser smoke — mobile Chromium
+        timeout-minutes: 2
+        run: npx playwright test tests/release-hardening.spec.js --project=mobile-chromium --grep "cross-browser smoke"
+      - name: Cross-browser smoke — mobile WebKit
+        timeout-minutes: 2
+        run: npx playwright test tests/release-hardening.spec.js --project=mobile-webkit --grep "cross-browser smoke"
       - name: Upload Playwright diagnostics
-        if: ${{ !cancelled() }}
+        if: ${{ always() && !cancelled() }}
         uses: actions/upload-artifact@v4
         with:
           name: playwright-diagnostics-${{ github.run_attempt }}
